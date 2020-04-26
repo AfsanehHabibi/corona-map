@@ -6,6 +6,7 @@ dependencies:
   ejs: 3.0.2
   express: 4.17.1
   morgan: 1.10.0
+  rotating-file-stream: 2.0.2
   winston: 3.2.1
 devDependencies:
   nodemon: 2.0.3
@@ -1169,6 +1170,12 @@ packages:
     dev: true
     resolution:
       integrity: sha1-kYcg7ztjHFZCvgaPFa3lpG9Loec=
+  /rotating-file-stream/2.0.2:
+    dev: false
+    engines:
+      node: '>=10.0'
+    resolution:
+      integrity: sha512-xu0LXI7NMnXOMkNbJyLDTEtfHf6BOLMweZeaKd37QZLiSk+eAi/wTmxTONNK8e9lfJfge1P3I3QoiLmLb2Kyyw==
   /safe-buffer/5.1.2:
     dev: false
     resolution:
@@ -1511,4 +1518,5 @@ specifiers:
   express: ^4.17.1
   morgan: ^1.10.0
   nodemon: ^2.0.3
+  rotating-file-stream: ^2.0.2
   winston: ^3.2.1
