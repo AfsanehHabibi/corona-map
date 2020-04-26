@@ -18,6 +18,10 @@ const logger = winston.createLogger({
     ]
   });
 app.use(morgan('common', { stream: requestLogStream }));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views',path.join( __dirname+'/view'));
+app.use(require("./api/index.js"));
 app.set('port',process.env.PORT );
 app.listen(app.get('port'));
 logger.log({

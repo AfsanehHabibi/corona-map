@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Corona Statistics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-gradient-primary">
+  <div class="jumbotron ">
+    <h1>Coronavirus Statistics</h1>      
+    <p>The coronavirus pandemic has sickened more than
+      <%= total.confirmed %> people, according to official counts. At least 
+      <%= total.deaths %> people have died, and the virus has been detected in at least
+      <%= data.length %> countries, as these data show..</p>
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+  <table class="table table-hover table-striped">
+  <thead >
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">CASES</th>
+    <th scope="col">DEATHS</th>
+    <th scope="col">RECOVERED</th>
+  </tr>
+</thead>
+<tbody>
+  <% data.forEach(function(element){ %>
+    <tr>
+      <td><%= element.country %></td>
+      <td><%= element.confirmed %></td>
+      <td><%= element.deaths %></td>
+      <td><%= element.recovered %></td>
+      </tr>
+  <% }); %>
+</tbody>
+</table></div>
+<div class="col-sm"></div>
+</div>
+</div>
+
+</body>
+</html>
