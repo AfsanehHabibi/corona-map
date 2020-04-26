@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 app.use(cors());
-let requestLogStream = fs.createWriteStream(path.join(__dirname, 'log/requests.log'), { flags: 'a' });
+let requestLogStream = fs.createWriteStream(path.join(__dirname, 'log/requests.log'), { flags: 'w' });
 //somehow it failed to create file itself
 const logger = winston.createLogger({
     transports: [
