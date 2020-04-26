@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
 </head>
 <body class="bg-gradient-primary">
   <div class="jumbotron ">
@@ -31,19 +32,76 @@
   </tr>
 </thead>
 <tbody>
-  <% data.forEach(function(element){ %>
-    <tr>
-      <td><%= element.country %></td>
+  <% data.forEach(function(element,index){ %>
+    <tr data-toggle="collapse" data-target=".child<%=index%>">
+    <td><%= element.country %><% if (element.province.length!=0) { %>
+      <p class="small text-danger"><%= "more >" %></p>
+    <% } %> </td>
       <td><%= element.confirmed %></td>
       <td><%= element.deaths %></td>
       <td><%= element.recovered %></td>
       </tr>
+      <% element.province.forEach(function(child){ %>
+      <tr class="collapse child<%=index%> small">
+        <td ><%= child.name %></td>
+        <td ><%= child.confirmed %></td>
+        <td ><%= child.deaths %></td>
+        <td ><%= child.recovered %></td>
+      </tr>
+      <% }); %>
   <% }); %>
 </tbody>
 </table></div>
 <div class="col-sm"></div>
 </div>
 </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Created On</th>
+          <th>Last Modified</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr data-toggle="collapse" data-target=".child1">
+          <td><div>&gt;</div></td>
+          <td>Parent 1</td>
+          <td>04/02/2017</td>
+          <td>04/04/2017</td>
+        </tr>
+
+        <tr class="collapse child1">
+          <td></td>
+          <td>Child A</td>
+          <td>04/01/2017</td>
+          <td>04/05/2017</td>
+        </tr>
+        
+        <tr class="collapse child1">
+          <td></td>
+          <td>Child B</td>
+          <td>04/03/2017</td>
+          <td>04/04/2017</td>
+        </tr>          
+        
+        <tr data-toggle="collapse" data-target=".child2">
+          <td><div>&gt;</div></td>
+          <td>Parent 2</td>
+          <td>04/03/2017</td>
+          <td>04/10/2017</td>
+        </tr>
+
+        <tr class="collapse child2">
+          <td></td>
+          <td>Child X</td>
+          <td>04/10/2017</td>
+          <td>04/11/2017</td>
+        </tr>          
+      </tbody>
+    </table>
 
 </body>
 </html>

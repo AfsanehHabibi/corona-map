@@ -17,17 +17,28 @@ router.get("/",function(req,res){
       let total_deaths=0;
       let total_recovered=0;
       let total_confirmed=0;
+      let province=[];
+      
       corona_statistics[key].forEach(element=>{
         total_deaths+=element.latest.deaths;
         total_recovered+=element.latest.recovered;
         total_confirmed+=element.latest.confirmed;
+        if(element.province!=''){
+          province.push({
+            deaths:element.latest.deaths,
+            recovered:element.latest.recovered,
+            confirmed:element.latest.confirmed,
+            name:element.province
+          });
+        }
       }
       );
       small_data.push({
         country:key,
         deaths:total_deaths,
         recovered:total_recovered,
-        confirmed:total_confirmed
+        confirmed:total_confirmed,
+        province:province
       });
   });
   small_data.sort((a, b) =>  parseInt(b.confirmed)- parseInt(a.confirmed) );
